@@ -64,7 +64,7 @@ export default function Button({ label, theme, onPress }) {
                         color="blue"
                         style={styles.buttonIcon}
                     />
-                    <Text style={styles.buttonLabel}>{label}</Text>
+                    {/*<Text style={styles.buttonLabel}>{label}</Text>*/}
                 </Pressable>
             </View>
         );
@@ -80,7 +80,7 @@ export default function Button({ label, theme, onPress }) {
                         color="blue"
                         style={styles.buttonIcon}
                     />
-                    <Text style={styles.buttonLabel}>{label}</Text>
+                    {/*<Text style={styles.buttonLabel}>{label}</Text>*/}
                 </Pressable>
             </View>
         );
@@ -96,7 +96,7 @@ export default function Button({ label, theme, onPress }) {
                         color="green"
                         style={styles.buttonIcon}
                     />
-                    <Text style={styles.buttonLabel}>{label}</Text>
+                    {/*<Text style={styles.buttonLabel}>{label}</Text>*/}
                 </Pressable>
             </View>
         );
@@ -112,7 +112,7 @@ export default function Button({ label, theme, onPress }) {
                         color="blue"
                         style={styles.buttonIcon}
                     />
-                    <Text style={styles.buttonLabel}>{label}</Text>
+                    {/*<Text style={styles.buttonLabel}>{label}</Text>*/}
                 </Pressable>
             </View>
         )

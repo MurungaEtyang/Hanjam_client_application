@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, Text, View, Image, FlatList, TouchableWithoutFeedback } from 'react-native';
+import { Text, View, Image, FlatList, TouchableWithoutFeedback } from 'react-native';
 import ImageViewer from "./client/services/components/ImageViewer";
+import { styles } from "./assets/style/styles";
 
 import Button from "./client/services/components/Buttons";
 import * as ImagePicker from 'expo-image-picker';
@@ -35,11 +36,9 @@ export default function App() {
         const currentTime = new Date().getTime();
 
         if (hoveredIndex === index) {
-            // Image is already hovered, check for double-click
+
             if (currentTime - lastClickTime <= DOUBLE_CLICK_DELAY) {
-                // Perform double-click action here
                 console.log("Double-clicked on image", index);
-                // Add your code to handle the double-click event
             }
         }
 
@@ -59,8 +58,12 @@ export default function App() {
                     <View style={styles.iconContainer}>
                         {/*top screen*/}
                         <View style={styles.topIconContainer}>
-                            <Button label="Back" onPress={()=> alert("Back button clicked")}/>
-                            <Button label="Live" onPress={()=> alert("Live button clicked")}/>
+                            <View style={styles.leftIcon}>
+                                <Button label="Back" onPress={() => alert("Back button clicked")} />
+                            </View>
+                            <View style={styles.rightIcon}>
+                                <Button label="Live" onPress={() => alert("Live button clicked")} />
+                            </View>
                         </View>
 
                         {/*side screen */}
@@ -102,57 +105,3 @@ export default function App() {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    textContainer: {
-        paddingTop: 10,
-    },
-    imageSpace: {
-        marginLeft: 20,
-    },
-    image: {
-        width: 300,
-        height: 400,
-        borderRadius: 10,
-    },
-    icons: {
-        width: 20,
-        height: 20,
-        borderRadius: 10,
-    },
-    footerContainer: {
-        alignItems: 'center',
-    },
-    topIconContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        marginTop: 5,
-    },
-
-    bottomIconContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        marginTop: 20,
-    },
-    sideIconContainer: {
-        flexDirection: 'column',
-        justifyContent: 'center',
-        marginTop: 20,
-    },
-    iconContainer: {
-        position: 'absolute',
-        top: 10,
-        left: 10,
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    icon: {
-        marginRight: 10,
-    },
-});
