@@ -59,7 +59,7 @@ export default function Button({ label, theme, onPress }) {
             <View style={styles.buttonContainer}>
                 <Pressable style={styles.button} onPress={onPress}>
                     <FontAwesome
-                        name="thumbs-up"
+                        name="heart"
                         size={18}
                         color="blue"
                         style={styles.buttonIcon}

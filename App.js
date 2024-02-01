@@ -1,16 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, TouchableWithoutFeedback } from 'react-native';
 import ImageViewer from "./client/services/components/ImageViewer";
 
 import Button from "./client/services/components/Buttons";
 import * as ImagePicker from 'expo-image-picker';
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 const placeholder1 = require('./client/services/images/hot1.jpeg');
 const placeholder2 = require('./client/services/images/hot2.jpeg');
 
 export default function App() {
     const [selectedImage, useSelectedImage] = useState(null);
+    const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [lastClickTime, setLastClickTime] = useState(0); // New state variable for last click time
     const images = [placeholder1, placeholder2];
 
     const pickImageAsync = async () => {
@@ -27,10 +30,50 @@ export default function App() {
         }
     }
 
+    const handleImageHover = (index) => {
+        const DOUBLE_CLICK_DELAY = 300; // Time threshold for double-click in milliseconds
+        const currentTime = new Date().getTime();
+
+        if (hoveredIndex === index) {
+            // Image is already hovered, check for double-click
+            if (currentTime - lastClickTime <= DOUBLE_CLICK_DELAY) {
+                // Perform double-click action here
+                console.log("Double-clicked on image", index);
+                // Add your code to handle the double-click event
+            }
+        }
+
+        setHoveredIndex(index);
+        setLastClickTime(currentTime); // Update the last click time
+    }
+
     const renderItem = ({ item, index }) => (
-        <View style={index !== 0 && styles.imageSpace}>
-            <ImageViewer placeHolderImage={item} selectedImage={selectedImage}/>
-        </View>
+        <TouchableWithoutFeedback
+            onPress={() => handleImageHover(index)}
+            onMouseEnter={() => handleImageHover(index)}
+            onMouseLeave={() => handleImageHover(null)}
+        >
+            <View style={index !== 0 && styles.imageSpace}>
+                <ImageViewer placeHolderImage={item} selectedImage={selectedImage} />
+                {hoveredIndex === index && (
+                    <View style={styles.iconContainer}>
+                        {/*top screen*/}
+                        <View style={styles.topIconContainer}>
+                            <Button label="Back" onPress={()=> alert("Back button clicked")}/>
+                            <Button label="Live" onPress={()=> alert("Live button clicked")}/>
+                        </View>
+
+                        {/*side screen */}
+                        <View style={styles.sideIconContainer}>
+                            <Button label="Like" onPress={() => alert("like button clicked")} />
+                            <Button label="Comment" onPress={() => alert("comment button clicked")} />
+                            <Button label="Share" onPress={() => alert("share button clicked")} />
+                            <Button label="Download" onPress={() => alert("Download button clicked")} />
+                        </View>
+                    </View>
+                )}
+            </View>
+        </TouchableWithoutFeedback>
     );
 
     return (
@@ -49,22 +92,9 @@ export default function App() {
             {/*    <Button theme="primary" label="Choose a photo" onPress={pickImageAsync} />*/}
             {/*</View>*/}
 
-            {/*top screen*/}
-            <View style={styles.topIconContainer}>
-                <Button label="Back" onPress={()=> alert("Back button clicked")}/>
-                <Button label="Live" onPress={()=> alert("Live button clicked")}/>
-            </View>
-
-            {/*side screen */}
-            <View style={styles.sideIconContainer}>
-                <Button label="Like" onPress={() => alert("like button clicked")} />
-                <Button label="Comment" onPress={() => alert("comment button clicked")} />
-                <Button label="Share" onPress={() => alert("share button clicked")} />
-                <Button label="Download" onPress={() => alert("Download button clicked")} />
-            </View>
 
             {/*bottom screen*/}
-            <View style={styles.topIconContainer}>
+            <View style={styles.bottomIconContainer}>
                 <Button label="Home" onPress={()=> alert("Home button clicked")}/>
                 <Button label="Upload" onPress={pickImageAsync}/>
                 <Button label="Profile" onPress={()=> alert("Profile button clicked")}/>
@@ -102,12 +132,27 @@ const styles = StyleSheet.create({
     topIconContainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-        marginTop: 20,
+        marginTop: 5,
     },
 
+    bottomIconContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginTop: 20,
+    },
     sideIconContainer: {
         flexDirection: 'column',
         justifyContent: 'center',
         marginTop: 20,
-    }
+    },
+    iconContainer: {
+        position: 'absolute',
+        top: 10,
+        left: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    icon: {
+        marginRight: 10,
+    },
 });
