@@ -32,7 +32,7 @@ export default function App() {
     }
 
     const handleImageHover = (index) => {
-        const DOUBLE_CLICK_DELAY = 300; // Time threshold for double-click in milliseconds
+        const DOUBLE_CLICK_DELAY = 300;
         const currentTime = new Date().getTime();
 
         if (hoveredIndex === index) {
@@ -43,7 +43,7 @@ export default function App() {
         }
 
         setHoveredIndex(index);
-        setLastClickTime(currentTime); // Update the last click time
+        setLastClickTime(currentTime);
     }
 
     const renderItem = ({ item, index }) => (
