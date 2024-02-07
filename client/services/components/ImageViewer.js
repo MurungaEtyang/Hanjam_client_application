@@ -9,8 +9,8 @@ export default function ImageViewer( {placeHolderImage, selectedImage} ){
 
 const styles = StyleSheet.create({
     image: {
-        width: 350,
-        height: 500,
+        width: 400,
+        height: 550,
         borderRadius: 10,
     }
 })

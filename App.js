@@ -3,19 +3,24 @@ import { useState } from 'react';
 import { Text, View, Image, FlatList, TouchableWithoutFeedback } from 'react-native';
 import ImageViewer from "./client/services/components/ImageViewer";
 import { styles } from "./assets/style/styles";
-
 import Button from "./client/services/components/Buttons";
 import * as ImagePicker from 'expo-image-picker';
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 const placeholder1 = require('./client/services/images/hot1.jpeg');
 const placeholder2 = require('./client/services/images/hot2.jpeg');
+const placeholder3 = require('./client/services/images/hot3.jpeg');
+const placeholder4 = require('./client/services/images/hot1.jpeg');
+const placeholder5 = require('./client/services/images/hot2.jpeg');
+const placeholder6 = require('./client/services/images/hot3.jpeg');
+const placeholder7 = require('./client/services/images/hot1.jpeg');
+const placeholder8 = require('./client/services/images/hot2.jpeg');
 
 export default function App() {
     const [selectedImage, useSelectedImage] = useState(null);
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [lastClickTime, setLastClickTime] = useState(0); // New state variable for last click time
-    const images = [placeholder1, placeholder2];
+    const images = [placeholder1, placeholder2,placeholder3,placeholder4, placeholder5,placeholder6,placeholder7, placeholder8,placeholder3,];
 
     const pickImageAsync = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -46,6 +51,7 @@ export default function App() {
         setLastClickTime(currentTime);
     }
 
+
     const renderItem = ({ item, index }) => (
         <TouchableWithoutFeedback
             onPress={() => handleImageHover(index)}
@@ -61,17 +67,36 @@ export default function App() {
                             <View style={styles.leftIcon}>
                                 <Button label="Back" onPress={() => alert("Back button clicked")} />
                             </View>
+                            <View style={styles.rightIconSearch}>
+                                <Button label="search" onPress={() => alert("search button clicked")} />
+                            </View>
                             <View style={styles.rightIcon}>
                                 <Button label="Live" onPress={() => alert("Live button clicked")} />
                             </View>
                         </View>
 
+                        <View style={styles.sideIconContainerSubscribe}>
+                            <Button label="subscribe" onPress={() => alert("Subscribe button clicked")} />
+                        </View>
+
                         {/*side screen */}
-                        <View style={styles.sideIconContainer}>
+                        <View style={styles.sideIconContainerRefresh}>
+                            <Button label="Refresh" onPress={() => alert("Refresh button clicked")} />
+                        </View>
+                        <View style={styles.sideIconContainerLike}>
                             <Button label="Like" onPress={() => alert("like button clicked")} />
+                        </View>
+                        <View style={styles.sideIconContainerComment}>
                             <Button label="Comment" onPress={() => alert("comment button clicked")} />
+                        </View>
+                        <View style={styles.sideIconContainerShare}>
                             <Button label="Share" onPress={() => alert("share button clicked")} />
+                        </View>
+                        <View style={styles.sideIconContainerDownload}>
                             <Button label="Download" onPress={() => alert("Download button clicked")} />
+                        </View>
+                        <View style={styles.sideIconContainerOther}>
+                            <Button label="Other" onPress={() => alert("Back button clicked")} />
                         </View>
                     </View>
                 )}

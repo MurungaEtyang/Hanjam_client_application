@@ -1,4 +1,5 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from
+        'react-native';
 
 export const styles = StyleSheet.create({
     container: {
@@ -25,37 +26,130 @@ export const styles = StyleSheet.create({
     },
     footerContainer: {
         alignItems: 'center',
+
     },
     topIconContainer: {
+        position: 'relative',
+        Top:5,
+
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'flex-start',
-        marginTop: 5,
+        // alignItems: 'flex-start',
+        // marginTop: 1,
     },
     bottomIconContainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',
         marginTop: 10,
     },
-    sideIconContainer: {
+//css of the icons at the sideContainer
+    sideIconContainerRefresh: {
+        // flexDirection: 'column',
+        // justifyContent: 'center',
+        // marginTop: 10,
+        position: 'absolute',
+        top: 80,
+        left: 270,
         flexDirection: 'column',
-        justifyContent: 'center',
-        marginTop: 10,
+        alignItems: 'center',
+
+
     },
+    sideIconContainerLike: {
+        // flexDirection: 'column',
+        // justifyContent: 'center',
+        // marginTop: 10,
+        position: 'absolute',
+        top: 140,
+        left: 270,
+        flexDirection: 'column',
+        alignItems: 'center',
+        transition: 'color 0.3s ease'
+    },
+
+
+    sideIconContainerComment:{
+        // flexDirection: 'column',
+        // justifyContent: 'center',
+        // marginTop: 10,
+        position: 'absolute',
+        top: 200,
+        left: 270,
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    sideIconContainerShare:{
+        // flexDirection: 'column',
+        // justifyContent: 'center',
+        // marginTop: 10,
+        position: 'absolute',
+        top: 260,
+        left: 270,
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    sideIconContainerDownload:{
+        // flexDirection: 'column',
+        // justifyContent: 'center',
+        // marginTop: 10,
+        position: 'absolute',
+        top: 320,
+        left: 270,
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    sideIconContainerOther:{
+        // flexDirection: 'column',
+        // justifyContent: 'center',
+        // marginTop: 10,
+        position: 'absolute',
+        top: 380,
+        left: 70,
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+
+
     iconContainer: {
         position: 'absolute',
-        top: 10,
-        left: 10,
+        top: 100,
+        left: 40,
         flexDirection: 'row',
         alignItems: 'center',
     },
     icon: {
         marginRight: 10,
     },
+    //css of the icon at the top center
     leftIcon: {
-        marginRight: 'auto',
+        position:'absolute',
+        top: -100,
+        left: -70,
+        // marginRight: 'auto',
+    },
+    rightIconSearch: {
+        position:'absolute',
+        top: -100,
+        left: 139,
+        // marginLeft: 'auto',
+
+
     },
     rightIcon: {
-        marginLeft: 'auto',
+        position:'absolute',
+        top: -100,
+        left: 239,
+        // marginLeft: 'auto',
     },
+    //css of icons at the bottom
+    sideIconContainerSubscribe: {
+        // flexDirection: 'column',
+        // justifyContent: 'center',
+        // marginTop: 10,
+        position: 'absolute',
+        top: 390,
+        left: -70,
+        flexDirection: 'column',
+        alignItems: 'center',
+    }
 });
